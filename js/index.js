@@ -1,65 +1,47 @@
-//object literal
-let carParams = {
-  make: "Chevy",
-  model: "Impala",
-  year: 2020,
-  color: "white",
-  passengers: 4,
-  convertible: false,
-  mileage: 1200,
-};
-let carChevy = new Cars(carParams);
-
-//object constructor
-function Cars(params) {
-  this.make = params.make;
-  this.model = params.model;
-  this.year = params.year;
-  this.color = params.color;
-  this.passengers = params.passengers;
-  this.convertible = params.convertible;
-  this.mileage = params.mileage;
-  this.started = false;
-  (this.start = function () {
-    this.started = true;
-  }),
-    (this.stop = function () {
-      this.started = false;
-    }),
-    (this.drive = function () {
-      if (this.started) {
-        console.log(this.make + " " + this.model + " " + " goes zoom zoom.");
-      } else {
-        console.log("Start the engine first.");
-      }
-    });
+/*
+function CarPrototype(make, year, color, model) {
+  this.make = make;
+  this.year = year;
+  this.color = color;
+  this.model = model;
+  this.started = true;
+  this.start = function () {
+    this.started = false;
+  };
+  this.stop = function () {
+    this.started = false;
+  };
+  this.drive = function () {
+    if (this.started) {
+      console.log(
+        this.make + " " + this.color + " " + this.model + " goes zoom zoom."
+      );
+    } else {
+      console.log("You need to start the engine first.");
+    }
+  };
 }
-//assign value to the constructor
-let chevy = new Cars(
-  "Chevy",
-  "Impala",
-  2020,
-  "Navy Blue",
-  4,
-  false,
-  12000,
-  true
-);
-let honda = new Cars("Honda", "Accord", 2018, "white", 4, false, 1320, true);
-//test drive method
-let testDrive = new Cars(
-  "Webville Motors",
-  "Test Car",
-  2014,
-  "marine",
-  2,
-  true,
-  21
-);
+let honda = new CarPrototype("Honda", 2010, "blue", "accord");
+let acura = new CarPrototype("Acura", 2013, "red", "nsx");
+honda.drive();
+acura.drive();
+*/
 
-let cars = [chevy, honda, testDrive];
-for (let i = 0; i < cars.length; i++) {
-  cars[i].start();
-  cars[i].drive();
-  cars[i].stop();
+function Dog(name, breed, weight) {
+  this.name = name;
+  this.breed = breed;
+  this.weight = weight;
+}
+let buddy = new Dog("Buddy", "Poodle", 20);
+let spot = new Dog("Spot", "Golden Retriever", 50);
+let cupcake = new Dog("Cupcake", "Bully", 32);
+let dogs = [buddy, spot, cupcake];
+
+for (let i = 0; i < dogs.length; i++) {
+  let size = "small";
+  if (dogs[i].weight > 10) {
+    size = "large";
+  } else {
+    console.log("Dog: " + dogs[i].name + " is a " + size + " " + dogs[i].breed);
+  }
 }
